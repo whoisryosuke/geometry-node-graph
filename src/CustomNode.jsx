@@ -40,10 +40,10 @@ export default function TextUpdaterNode({ data }) {
         </div>
         <div>{/* Nodes */}</div>
       </div>
-      {data.inputs.map((input, index) => (
+      {data.outputs.map((input, index) => (
         <Handle
           key={input.identifier}
-          type="target"
+          type="source"
           position={Position.Right}
           style={{ top: HEADER_SIZE + HANDLE_SPACING * index }}
           id={input.type}

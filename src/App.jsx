@@ -39,8 +39,8 @@ const edges = data.links.map((link) => {
     id: hash,
     source: link.from_node,
     target: link.to_node,
-    // sourceHandle: link.from_socket.type,
-    // targetHandle: link.to_socket.type,
+    sourceHandle: link.from_socket.type,
+    targetHandle: link.to_socket.type,
   };
 });
 
