@@ -10,7 +10,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve("src", "index.ts"),
-      name: "ReactGeometryNodeGraph",
+      name,
       formats: ["es", "umd"],
       fileName: (format) => `${name}.${format}.js`,
     },
