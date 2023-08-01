@@ -5,15 +5,6 @@ import data from "./data/Test-nodes-53.json";
 import "reactflow/dist/style.css";
 import TextUpdaterNode from "./CustomNode";
 
-// Create custom node components
-// const customNodes = data.nodes.reduce((merge, node) => {
-
-//   return {
-//     ...merge,
-
-//   }
-// }, {})
-
 // Convert Blender format to ReactFlow
 const nodes = data.nodes.map((node) => ({
   id: node.uuid,

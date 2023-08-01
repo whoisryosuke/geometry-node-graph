@@ -1,8 +1,8 @@
 import { Handle, Position } from "reactflow";
 import { GeometryNodeData } from "./types";
 
-const HEADER_SIZE = 30;
-const HANDLE_SPACING = 20;
+const HEADER_SIZE = 35;
+const HANDLE_SPACING = 22;
 
 type Props = {
   data: GeometryNodeData,
@@ -11,6 +11,8 @@ type Props = {
 export default function TextUpdaterNode({ data }: Props) {
   console.log("node data", data);
 
+  const inputTopMargin = data.outputs.length * HANDLE_SPACING;
+
   return (
     <>
       {data.inputs.map((input, index) => (
@@ -18,7 +20,7 @@ export default function TextUpdaterNode({ data }: Props) {
           key={input.identifier}
           type="target"
           position={Position.Left}
-          style={{ top: HEADER_SIZE + HANDLE_SPACING * index }}
+          style={{ top: HEADER_SIZE + HANDLE_SPACING * index + inputTopMargin }}
           id={input.type}
         />
       ))}
@@ -41,7 +43,24 @@ export default function TextUpdaterNode({ data }: Props) {
         >
           {data?.label ?? "Node"}
         </div>
-        <div>{/* Nodes */}</div>
+        <div style={{display:'flex', flexDirection: "column"}}>
+          <div style={{display:'flex', flexDirection: "column"}}>
+            {data.outputs.map((input) => (
+              <div 
+                key={input.identifier}
+                style={{display:'flex', justifyContent: "flex-end"}}
+              >{input.name}</div>
+            ))}
+          </div>
+          <div style={{display:'flex', flexDirection: "column"}}>
+            {data.inputs.map((input) => (
+              <div 
+                key={input.identifier}
+                style={{display:'flex'}}
+              >{input.name}</div>
+            ))}
+          </div>
+        </div>
       </div>
       {data.outputs.map((input, index) => (
         <Handle
