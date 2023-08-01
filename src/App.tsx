@@ -2,7 +2,6 @@ import { useState, useMemo } from "react";
 import ReactFlow, { Controls, Background, DefaultEdgeOptions, Edge, Node } from "reactflow";
 import "reactflow/dist/style.css";
 import data from "./data/Tutorial-nodes-0.json";
-import "reactflow/dist/style.css";
 import TextUpdaterNode from "./CustomNode";
 import { GeometryNodeData } from "./types";
 import { SOCKET_COLORS } from "./constants/colors"
