@@ -14,13 +14,14 @@ export default defineConfig({
       formats: ["es", "umd"],
       fileName: (format) => `${name}.${format}.js`,
     },
-  },
-  rollupOptions: {
-    external: ["react", "react-dom"],
-    output: {
-      globals: {
-        react: "React",
-        "react-dom": "ReactDOM",
+
+    rollupOptions: {
+      external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
       },
     },
   },
