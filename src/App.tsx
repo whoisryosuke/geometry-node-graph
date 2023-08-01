@@ -1,12 +1,15 @@
 import { useState, useMemo } from "react";
-import ReactFlow, { Controls, Background, DefaultEdgeOptions } from "reactflow";
+import ReactFlow, { Controls, Background, DefaultEdgeOptions, Edge, Node } from "reactflow";
 import "reactflow/dist/style.css";
 import data from "./data/Tutorial-nodes-0.json";
 import "reactflow/dist/style.css";
 import TextUpdaterNode from "./CustomNode";
+import { GeometryNodeData } from "./types";
+import { SOCKET_COLORS } from "./constants/colors"
+import Sockets from "./Sockets";
 
 // Convert Blender format to ReactFlow
-const nodes = data.nodes.map((node) => ({
+const nodes: Node<GeometryNodeData>[] = data.nodes.map((node) => ({
   id: node.uuid,
   position: node.location,
   type: "textUpdater",
@@ -23,7 +26,7 @@ const nodes = data.nodes.map((node) => ({
   },
 }));
 
-const edges = data.links.map((link) => {
+const edges: Edge[] = data.links.map((link) => {
   const hash = Number(new Date()).toString(36);
 
   return {
@@ -32,6 +35,11 @@ const edges = data.links.map((link) => {
     target: link.to_node,
     sourceHandle: link.from_socket.type,
     targetHandle: link.to_socket.type,
+    
+    style: {
+      strokeWidth: 2,
+      stroke: SOCKET_COLORS[link.from_socket.type],
+    },
   };
 });
 
@@ -43,6 +51,7 @@ function App() {
   const nodeTypes = useMemo(() => ({ textUpdater: TextUpdaterNode }), []);
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
+      <Sockets />
       <ReactFlow
         nodes={nodes}
         edges={edges}
