@@ -16,9 +16,11 @@ Open the app in your web browser, you should see a node graph.
 
 This app works by using JSON files with geometry node data exported from Blender using a custom plugin (TBD). But I included the WIP script below, it should work to export some basic graphs (haven't tested stuff like custom nodes, groups, etc).
 
-1. Go to the Scripting tab in Blender (or change one of the windows to scripting)
-2. Create a new script (click the "New" button on top of window)
-3. Paste the following script inside:
+1. Save your file somewhere.
+2. Select the object with the geometry nodes modifier.
+3. Go to the Scripting tab in Blender (or change one of the windows to scripting)
+4. Create a new script (click the "New" button on top of window)
+5. Paste the following script inside:
 
 ```python
 import bpy, json, uuid
@@ -248,11 +250,11 @@ for modifier in obj.modifiers:
 
 ```
 
-4. Run the script.
-5. Look inside the folder where your file is saved, you should a JSON file
-6. Copy and paste that JSON file into the `src/data/` folder of this app.
-7. Open up the `src/App.tsx` and swap your JSON filename for the one imported in there.
-8. Hard refresh the browser/app to see changes.
+5. Run the script.
+6. Look inside the folder where your file is saved, you should a JSON file
+7. Copy and paste that JSON file into the `src/data/` folder of this app.
+8. Open up the `src/App.tsx` and swap your JSON filename for the one imported in there.
+9. Hard refresh the browser/app to see changes.
 
 ## How it works
 
