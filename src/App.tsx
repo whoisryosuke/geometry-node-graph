@@ -1,10 +1,10 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import ReactFlow, { Controls, Background, DefaultEdgeOptions, Edge, Node } from "reactflow";
 import "reactflow/dist/style.css";
 import data from "./data/Tutorial-nodes-0.json";
 import TextUpdaterNode from "./CustomNode";
 import { GeometryNodeData } from "./types";
-import { SOCKET_COLORS } from "./constants/colors"
+import { NODE_INPUT_TYPES, SOCKET_COLORS } from "./constants/colors"
 import Sockets from "./Sockets";
 
 
@@ -46,7 +46,7 @@ function App() {
       
       style: {
         strokeWidth: 2,
-        stroke: SOCKET_COLORS[link.from_socket.type],
+        stroke: SOCKET_COLORS[link.from_socket.type as NODE_INPUT_TYPES],
       },
     };
   }), []);

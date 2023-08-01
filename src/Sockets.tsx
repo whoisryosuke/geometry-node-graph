@@ -1,8 +1,4 @@
-import React from 'react'
-
-type Props = {}
-
-const Sockets = (props: Props) => {
+const Sockets = () => {
   return (
     <div>
 

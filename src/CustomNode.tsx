@@ -1,8 +1,8 @@
 import { Handle, Position } from "reactflow";
 import { GeometryNodeData, GeometryNodeInput } from "./types";
 import { useState } from "react";
-import { SOCKET_STYLES } from "./constants/sockets";
-import { SOCKET_COLORS } from "./constants/colors";
+import { SOCKET_STYLES, SOCKET_TYPES } from "./constants/sockets";
+import { NODE_INPUT_TYPES, SOCKET_COLORS } from "./constants/colors";
 
 const HEADER_SIZE = 35;
 const HANDLE_SPACING = 22;
@@ -68,8 +68,8 @@ export default function TextUpdaterNode({ data }: Props) {
           type="target"
           position={Position.Left}
           style={{
-            ...SOCKET_STYLES[input.display_shape],
-            backgroundColor: SOCKET_COLORS[input.type],
+            ...SOCKET_STYLES[input.display_shape as SOCKET_TYPES],
+            backgroundColor: SOCKET_COLORS[input.type as NODE_INPUT_TYPES],
             borderColor: "#1B1B1B",
             top: expanded
               ? HEADER_SIZE + HANDLE_SPACING * index + inputTopMargin
@@ -130,8 +130,8 @@ export default function TextUpdaterNode({ data }: Props) {
           type="source"
           position={Position.Right}
           style={{
-            ...SOCKET_STYLES[input.display_shape],
-            backgroundColor: SOCKET_COLORS[input.type],
+            ...SOCKET_STYLES[input.display_shape as SOCKET_TYPES],
+            backgroundColor: SOCKET_COLORS[input.type as NODE_INPUT_TYPES],
             borderColor: "#1B1B1B",
             top: expanded
               ? HEADER_SIZE + HANDLE_SPACING * index

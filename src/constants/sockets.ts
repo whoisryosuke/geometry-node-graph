@@ -1,4 +1,4 @@
-type SOCKET_TYPES = 'CIRCLE' |
+export type SOCKET_TYPES = 'CIRCLE' |
 'DIAMOND' |
 'DIAMOND_DOT'
 

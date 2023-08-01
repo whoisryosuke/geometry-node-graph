@@ -1,4 +1,4 @@
-type NODE_INPUT_TYPES = 'BOOLEAN' | 'GEOMETRY' | 'VECTOR' | 'CUSTOM' | 'INT' | 'VALUE' | 'OBJECT' | 'RGBA'
+export type NODE_INPUT_TYPES = 'BOOLEAN' | 'GEOMETRY' | 'VECTOR' | 'CUSTOM' | 'INT' | 'VALUE' | 'OBJECT' | 'RGBA'
 
 // The sockets on nodes. Colors depend on input type.
 // (aka "markers" for "edges" in react-flow)
