@@ -1,12 +1,22 @@
 import { Handle, Position } from "reactflow";
 import { GeometryNodeData, GeometryNodeInput } from "./types";
+import { useState } from "react";
 
 const HEADER_SIZE = 35;
 const HANDLE_SPACING = 22;
+const HANDLE_COLLAPSED = 12;
 
-type Props = {
-  data: GeometryNodeData;
-};
+type AccordionIconProps = {
+  dark?: boolean;
+}
+
+function AccordionIcon({dark}: AccordionIconProps) {
+  return(
+    <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.5 0.5L4.5 4L8 0.5" stroke={dark ? "#313131" : "#C1C1C1"} />
+    </svg>
+  )
+}
 
 type NodeSocketLabelProps = {
   input: GeometryNodeInput
@@ -21,8 +31,17 @@ function NodeSocketLabel({input, rightAlign}:NodeSocketLabelProps) {
   )
 }
 
+type Props = {
+  data: GeometryNodeData;
+};
+
 export default function TextUpdaterNode({ data }: Props) {
+  const [expanded, setExpanded] = useState(true)
   const inputTopMargin = data.outputs.length * HANDLE_SPACING;
+
+  const toggleExpanded = () => {
+    setExpanded((prevState) => !prevState)
+  }
 
   return (
     <>
@@ -31,7 +50,7 @@ export default function TextUpdaterNode({ data }: Props) {
           key={input.identifier}
           type="target"
           position={Position.Left}
-          style={{ top: HEADER_SIZE + HANDLE_SPACING * index + inputTopMargin }}
+          style={{ top: expanded ? HEADER_SIZE + HANDLE_SPACING * index + inputTopMargin : HANDLE_COLLAPSED }}
           id={input.type}
         />
       ))}
@@ -39,7 +58,7 @@ export default function TextUpdaterNode({ data }: Props) {
       <div
         style={{
           width: data.width,
-          minHeight: data.height,
+          minHeight: expanded ? data.height : 'auto',
           backgroundColor: "#303030",
           borderRadius: 6,
           boxShadow: "0px 4px 5px 1px rgba(0, 0, 0, 0.25)",
@@ -55,28 +74,31 @@ export default function TextUpdaterNode({ data }: Props) {
             borderTopRightRadius: 6,
           }}
         >
+          <button onClick={toggleExpanded} style={{background:'transparent', padding:0, marginRight: 4}}><AccordionIcon /></button>
           {data?.label ?? "Node"}
         </div>
         
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        {expanded &&
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {data.outputs.map((input) => (
-              <NodeSocketLabel input={input} rightAlign />
-            ))}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              {data.outputs.map((input) => (
+                <NodeSocketLabel input={input} rightAlign />
+              ))}
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              {data.inputs.map((input) => (
+                <NodeSocketLabel input={input} />
+              ))}
+            </div>
           </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {data.inputs.map((input) => (
-              <NodeSocketLabel input={input} />
-            ))}
-          </div>
-        </div>
+        }
       </div>
       {data.outputs.map((input, index) => (
         <Handle
           key={input.identifier}
           type="source"
           position={Position.Right}
-          style={{ top: HEADER_SIZE + HANDLE_SPACING * index }}
+          style={{ top: expanded ? HEADER_SIZE + HANDLE_SPACING * index : HANDLE_COLLAPSED }}
           id={input.type}
         />
       ))}
