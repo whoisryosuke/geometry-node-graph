@@ -1,3 +1,5 @@
+import { NODE_INPUT_TYPES } from "./constants/colors";
+
 export type NodeColorRGB = {
     r: number,
     g: number,
@@ -35,4 +37,48 @@ export type GeometryNodeInput = {
     "show_expanded": boolean,
     // Maybe hard-code some types?
     "type": string
+}
+
+type Vector2D = {
+    x: number;
+    y: number;
+}
+
+type GeometryNode = {
+      uuid: string;
+      type: string;
+      location: Vector2D;
+      width: number;
+      width_hidden: number;
+      height: number;
+      dimensions: Vector2D;
+      name: string;
+      label: string;
+      inputs: GeometryNodeInput[];
+      outputs: GeometryNodeInput[];
+      parent: null;
+      use_custom_color: boolean;
+      color: NodeColorRGB;
+      select: boolean;
+      show_options: boolean;
+      show_preview: boolean;
+      hide: boolean;
+      mute: boolean;
+}
+
+export type GeometryNodeLinkSocket = {
+    type: NODE_INPUT_TYPES
+    node: string;
+}
+
+export type GeometryNodeLink = {
+    from_node:string;
+    from_socket: GeometryNodeLinkSocket;
+    to_node:string;
+    to_socket: GeometryNodeLinkSocket;
+}
+
+export type GeometryNodeFile = {
+    nodes: GeometryNode[],
+    links: GeometryNodeLink[]
 }

@@ -1,5 +1,5 @@
-import Sockets from "./Sockets"
+import NodeGraph from "./components/NodeGraph"
 
 export default {
-    Sockets
+    NodeGraph
 }

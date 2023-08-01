@@ -1,8 +1,8 @@
 import { Handle, Position } from "reactflow";
-import { GeometryNodeData, GeometryNodeInput } from "./types";
+import { GeometryNodeData, GeometryNodeInput } from "../types";
 import { useState } from "react";
-import { SOCKET_STYLES, SOCKET_TYPES } from "./constants/sockets";
-import { NODE_INPUT_TYPES, SOCKET_COLORS } from "./constants/colors";
+import { SOCKET_STYLES, SOCKET_TYPES } from "../constants/sockets";
+import { NODE_INPUT_TYPES, SOCKET_COLORS } from "../constants/colors";
 
 const HEADER_SIZE = 35;
 const HANDLE_SPACING = 22;
