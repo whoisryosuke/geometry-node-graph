@@ -4,10 +4,7 @@ import { GeometryNodeFile } from "./types";
 import "reactflow/dist/style.css";
 
 function App() {
-
-  return (
-    <NodeGraph data={data as GeometryNodeFile} />
-  );
+  return <NodeGraph data={data as GeometryNodeFile} />;
 }
 
 export default App;
