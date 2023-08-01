@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import ReactFlow, { Controls, Background } from "reactflow";
+import ReactFlow, { Controls, Background, DefaultEdgeOptions } from "reactflow";
 import "reactflow/dist/style.css";
 import data from "./data/Test-nodes-53.json";
 import "reactflow/dist/style.css";
@@ -35,11 +35,15 @@ const edges = data.links.map((link) => {
   };
 });
 
+const defaultEdgeOptions: DefaultEdgeOptions = {
+  // animated: true,
+};
+
 function App() {
   const nodeTypes = useMemo(() => ({ textUpdater: TextUpdaterNode }), []);
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}>
+      <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} defaultEdgeOptions={defaultEdgeOptions}>
         <Background />
         <Controls />
       </ReactFlow>
