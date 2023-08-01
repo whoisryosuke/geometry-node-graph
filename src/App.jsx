@@ -1,14 +1,25 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import ReactFlow, { Controls, Background } from 'reactflow';
 import 'reactflow/dist/style.css';
 import data from "./data/Test-nodes-53.json"
 import 'reactflow/dist/style.css';
+import TextUpdaterNode from "./CustomNode"
+
+// Create custom node components
+// const customNodes = data.nodes.reduce((merge, node) => {
+
+//   return {
+//     ...merge,
+
+//   }
+// }, {})
 
 
 // Convert Blender format to ReactFlow
 const nodes = data.nodes.map(node => ({
   id: node.uuid,
   position: node.location,
+  type: "textUpdater",
   data: {
     label: node.name
   }
@@ -31,10 +42,10 @@ const initialNodes = [
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
 
 function App() {
-
+  const nodeTypes = useMemo(() => ({ textUpdater: TextUpdaterNode }), []);
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      <ReactFlow nodes={nodes} edges={edges}>
+      <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}>
         <Background />
         <Controls />
       </ReactFlow>
