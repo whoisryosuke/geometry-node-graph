@@ -1,3 +1,5 @@
+![Screenshot of the app](./docs/screenshot.png)
+
 # Geometry Node Graph
 
 Preview Geometry Nodes on web using React
