@@ -1,0 +1,271 @@
+{
+  "nodes": [
+    {
+      "uuid": "9cdc68fc-bc1a-4a61-a349-2e67ac5cfba8",
+      "type": "GROUP_INPUT",
+      "location": { "x": -340.0, "y": 0.0 },
+      "width": 140.0,
+      "width_hidden": 0.0,
+      "height": 100.0,
+      "dimensions": { "x": 140.0, "y": 72.0 },
+      "name": "Group Input",
+      "label": "",
+      "inputs": [],
+      "outputs": [
+        {
+          "description": "",
+          "display_shape": "CIRCLE",
+          "enabled": true,
+          "hide": false,
+          "hide_value": false,
+          "identifier": "Input_0",
+          "is_linked": true,
+          "is_multi_input": false,
+          "is_output": true,
+          "is_unavailable": false,
+          "label": "",
+          "link_limit": 4095,
+          "name": "Geometry",
+          "node": "9cdc68fc-bc1a-4a61-a349-2e67ac5cfba8",
+          "show_expanded": false,
+          "type": "GEOMETRY"
+        },
+        {
+          "description": "",
+          "display_shape": "CIRCLE",
+          "enabled": true,
+          "hide": false,
+          "hide_value": false,
+          "identifier": "__extend__",
+          "is_linked": false,
+          "is_multi_input": false,
+          "is_output": true,
+          "is_unavailable": false,
+          "label": "",
+          "link_limit": 4095,
+          "name": "",
+          "node": "9cdc68fc-bc1a-4a61-a349-2e67ac5cfba8",
+          "show_expanded": false,
+          "type": "CUSTOM"
+        }
+      ],
+      "parent": null,
+      "use_custom_color": false,
+      "color": {
+        "r": 0.6079999804496765,
+        "g": 0.6079999804496765,
+        "b": 0.6079999804496765
+      },
+      "select": false,
+      "show_options": true,
+      "show_preview": false,
+      "hide": false,
+      "mute": false
+    },
+    {
+      "uuid": "50d0dbe8-43eb-4f41-8045-15e87f58f454",
+      "type": "GROUP_OUTPUT",
+      "location": { "x": 200.0, "y": 0.0 },
+      "width": 140.0,
+      "width_hidden": 0.0,
+      "height": 100.0,
+      "dimensions": { "x": 140.0, "y": 72.0 },
+      "name": "Group Output",
+      "label": "",
+      "inputs": [
+        {
+          "description": "",
+          "display_shape": "CIRCLE",
+          "enabled": true,
+          "hide": false,
+          "hide_value": false,
+          "identifier": "Output_1",
+          "is_linked": true,
+          "is_multi_input": false,
+          "is_output": false,
+          "is_unavailable": false,
+          "label": "",
+          "link_limit": 1,
+          "name": "Geometry",
+          "node": "50d0dbe8-43eb-4f41-8045-15e87f58f454",
+          "show_expanded": false,
+          "type": "GEOMETRY"
+        },
+        {
+          "description": "",
+          "display_shape": "CIRCLE",
+          "enabled": true,
+          "hide": false,
+          "hide_value": false,
+          "identifier": "__extend__",
+          "is_linked": false,
+          "is_multi_input": false,
+          "is_output": false,
+          "is_unavailable": false,
+          "label": "",
+          "link_limit": 1,
+          "name": "",
+          "node": "50d0dbe8-43eb-4f41-8045-15e87f58f454",
+          "show_expanded": false,
+          "type": "CUSTOM"
+        }
+      ],
+      "outputs": [],
+      "parent": null,
+      "use_custom_color": false,
+      "color": {
+        "r": 0.6079999804496765,
+        "g": 0.6079999804496765,
+        "b": 0.6079999804496765
+      },
+      "select": false,
+      "show_options": true,
+      "show_preview": false,
+      "hide": false,
+      "mute": false
+    },
+    {
+      "uuid": "40d5572a-ea4c-4d65-99ea-4a200c81f50a",
+      "type": "SET_POSITION",
+      "location": { "x": -60.63032150268555, "y": 35.32087707519531 },
+      "width": 140.0,
+      "width_hidden": 0.0,
+      "height": 100.0,
+      "dimensions": { "x": 140.0, "y": 201.0 },
+      "name": "Set Position",
+      "label": "",
+      "inputs": [
+        {
+          "description": "",
+          "display_shape": "CIRCLE",
+          "enabled": true,
+          "hide": false,
+          "hide_value": false,
+          "identifier": "Geometry",
+          "is_linked": true,
+          "is_multi_input": false,
+          "is_output": false,
+          "is_unavailable": false,
+          "label": "",
+          "link_limit": 1,
+          "name": "Geometry",
+          "node": "40d5572a-ea4c-4d65-99ea-4a200c81f50a",
+          "show_expanded": false,
+          "type": "GEOMETRY"
+        },
+        {
+          "description": "",
+          "display_shape": "DIAMOND_DOT",
+          "enabled": true,
+          "hide": false,
+          "hide_value": true,
+          "identifier": "Selection",
+          "is_linked": false,
+          "is_multi_input": false,
+          "is_output": false,
+          "is_unavailable": false,
+          "label": "",
+          "link_limit": 1,
+          "name": "Selection",
+          "node": "40d5572a-ea4c-4d65-99ea-4a200c81f50a",
+          "show_expanded": false,
+          "type": "BOOLEAN"
+        },
+        {
+          "description": "",
+          "display_shape": "DIAMOND",
+          "enabled": true,
+          "hide": false,
+          "hide_value": true,
+          "identifier": "Position",
+          "is_linked": false,
+          "is_multi_input": false,
+          "is_output": false,
+          "is_unavailable": false,
+          "label": "",
+          "link_limit": 1,
+          "name": "Position",
+          "node": "40d5572a-ea4c-4d65-99ea-4a200c81f50a",
+          "show_expanded": false,
+          "type": "VECTOR"
+        },
+        {
+          "description": "",
+          "display_shape": "DIAMOND_DOT",
+          "enabled": true,
+          "hide": false,
+          "hide_value": false,
+          "identifier": "Offset",
+          "is_linked": false,
+          "is_multi_input": false,
+          "is_output": false,
+          "is_unavailable": false,
+          "label": "",
+          "link_limit": 1,
+          "name": "Offset",
+          "node": "40d5572a-ea4c-4d65-99ea-4a200c81f50a",
+          "show_expanded": false,
+          "type": "VECTOR"
+        }
+      ],
+      "outputs": [
+        {
+          "description": "",
+          "display_shape": "CIRCLE",
+          "enabled": true,
+          "hide": false,
+          "hide_value": false,
+          "identifier": "Geometry",
+          "is_linked": true,
+          "is_multi_input": false,
+          "is_output": true,
+          "is_unavailable": false,
+          "label": "",
+          "link_limit": 4095,
+          "name": "Geometry",
+          "node": "40d5572a-ea4c-4d65-99ea-4a200c81f50a",
+          "show_expanded": false,
+          "type": "GEOMETRY"
+        }
+      ],
+      "parent": null,
+      "use_custom_color": false,
+      "color": {
+        "r": 0.6079999804496765,
+        "g": 0.6079999804496765,
+        "b": 0.6079999804496765
+      },
+      "select": false,
+      "show_options": true,
+      "show_preview": false,
+      "hide": false,
+      "mute": false
+    }
+  ],
+  "links": [
+    {
+      "from_node": "40d5572a-ea4c-4d65-99ea-4a200c81f50a",
+      "from_socket": {
+        "type": "GEOMETRY",
+        "node": "40d5572a-ea4c-4d65-99ea-4a200c81f50a"
+      },
+      "to_node": "50d0dbe8-43eb-4f41-8045-15e87f58f454",
+      "to_socket": {
+        "type": "GEOMETRY",
+        "node": "50d0dbe8-43eb-4f41-8045-15e87f58f454"
+      }
+    },
+    {
+      "from_node": "9cdc68fc-bc1a-4a61-a349-2e67ac5cfba8",
+      "from_socket": {
+        "type": "GEOMETRY",
+        "node": "9cdc68fc-bc1a-4a61-a349-2e67ac5cfba8"
+      },
+      "to_node": "40d5572a-ea4c-4d65-99ea-4a200c81f50a",
+      "to_socket": {
+        "type": "GEOMETRY",
+        "node": "40d5572a-ea4c-4d65-99ea-4a200c81f50a"
+      }
+    }
+  ]
+}
