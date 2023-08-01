@@ -1,5 +1,5 @@
 {
-  "name": "geometry-node-graph",
+  "name": "react-geometry-node-graph",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -27,5 +27,17 @@
     "prettier": "^3.0.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/react-geometry-node-graph.umd.js",
+  "module": "./dist/react-geometry-node-graph.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/react-geometry-node-graph.es.js",
+      "require": "./dist/react-geometry-node-graph.umd.js"
+    }
   }
 }
