@@ -43,7 +43,12 @@ function App() {
   const nodeTypes = useMemo(() => ({ textUpdater: TextUpdaterNode }), []);
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} defaultEdgeOptions={defaultEdgeOptions}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        nodeTypes={nodeTypes}
+        defaultEdgeOptions={defaultEdgeOptions}
+      >
         <Background />
         <Controls />
       </ReactFlow>

@@ -9,27 +9,41 @@ const HANDLE_COLLAPSED = 12;
 type AccordionIconProps = {
   // Toggle to light mode
   light?: boolean;
-}
+};
 
-function AccordionIcon({light}: AccordionIconProps) {
-  return(
-    <svg width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+function AccordionIcon({ light }: AccordionIconProps) {
+  return (
+    <svg
+      width="9"
+      height="5"
+      viewBox="0 0 9 5"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path d="M0.5 0.5L4.5 4L8 0.5" stroke={light ? "#313131" : "#C1C1C1"} />
     </svg>
-  )
+  );
 }
 
 type NodeSocketLabelProps = {
-  input: GeometryNodeInput
-  rightAlign?: boolean,
-}
+  input: GeometryNodeInput;
+  rightAlign?: boolean;
+};
 
-function NodeSocketLabel({input, rightAlign}:NodeSocketLabelProps) {
+function NodeSocketLabel({ input, rightAlign }: NodeSocketLabelProps) {
   return (
-    <div key={input.identifier} style={{ display: "flex", fontSize: '12px', padding:'2px 8px', justifyContent: rightAlign ? "flex-end" : "flex-start" }}>
+    <div
+      key={input.identifier}
+      style={{
+        display: "flex",
+        fontSize: "12px",
+        padding: "2px 8px",
+        justifyContent: rightAlign ? "flex-end" : "flex-start",
+      }}
+    >
       {input.name}
     </div>
-  )
+  );
 }
 
 type Props = {
@@ -37,12 +51,12 @@ type Props = {
 };
 
 export default function TextUpdaterNode({ data }: Props) {
-  const [expanded, setExpanded] = useState(true)
+  const [expanded, setExpanded] = useState(true);
   const inputTopMargin = data.outputs.length * HANDLE_SPACING;
 
   const toggleExpanded = () => {
-    setExpanded((prevState) => !prevState)
-  }
+    setExpanded((prevState) => !prevState);
+  };
 
   return (
     <>
@@ -51,7 +65,11 @@ export default function TextUpdaterNode({ data }: Props) {
           key={input.identifier}
           type="target"
           position={Position.Left}
-          style={{ top: expanded ? HEADER_SIZE + HANDLE_SPACING * index + inputTopMargin : HANDLE_COLLAPSED }}
+          style={{
+            top: expanded
+              ? HEADER_SIZE + HANDLE_SPACING * index + inputTopMargin
+              : HANDLE_COLLAPSED,
+          }}
           id={input.type}
         />
       ))}
@@ -59,7 +77,7 @@ export default function TextUpdaterNode({ data }: Props) {
       <div
         style={{
           width: data.width,
-          minHeight: expanded ? data.height : 'auto',
+          minHeight: expanded ? data.height : "auto",
           backgroundColor: "#303030",
           borderRadius: 6,
           boxShadow: "0px 4px 5px 1px rgba(0, 0, 0, 0.25)",
@@ -67,7 +85,9 @@ export default function TextUpdaterNode({ data }: Props) {
       >
         <div
           style={{
-            backgroundColor: data.use_custom_color ? `rgb(${data.color.r},${data.color.g},${data.color.b})` : "#1D725E",
+            backgroundColor: data.use_custom_color
+              ? `rgb(${data.color.r},${data.color.g},${data.color.b})`
+              : "#1D725E",
             color: "#E5E5E5",
             fontSize: "12px",
             padding: "2px 4px",
@@ -75,11 +95,16 @@ export default function TextUpdaterNode({ data }: Props) {
             borderTopRightRadius: 6,
           }}
         >
-          <button onClick={toggleExpanded} style={{background:'transparent', padding:0, marginRight: 4}}><AccordionIcon /></button>
+          <button
+            onClick={toggleExpanded}
+            style={{ background: "transparent", padding: 0, marginRight: 4 }}
+          >
+            <AccordionIcon />
+          </button>
           {data?.label ?? "Node"}
         </div>
-        
-        {expanded &&
+
+        {expanded && (
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", flexDirection: "column" }}>
               {data.outputs.map((input) => (
@@ -92,14 +117,18 @@ export default function TextUpdaterNode({ data }: Props) {
               ))}
             </div>
           </div>
-        }
+        )}
       </div>
       {data.outputs.map((input, index) => (
         <Handle
           key={input.identifier}
           type="source"
           position={Position.Right}
-          style={{ top: expanded ? HEADER_SIZE + HANDLE_SPACING * index : HANDLE_COLLAPSED }}
+          style={{
+            top: expanded
+              ? HEADER_SIZE + HANDLE_SPACING * index
+              : HANDLE_COLLAPSED,
+          }}
           id={input.type}
         />
       ))}
