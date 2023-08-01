@@ -5,8 +5,8 @@ const HEADER_SIZE = 35;
 const HANDLE_SPACING = 22;
 
 type Props = {
-  data: GeometryNodeData,
-}
+  data: GeometryNodeData;
+};
 
 export default function TextUpdaterNode({ data }: Props) {
   console.log("node data", data);
@@ -43,21 +43,22 @@ export default function TextUpdaterNode({ data }: Props) {
         >
           {data?.label ?? "Node"}
         </div>
-        <div style={{display:'flex', flexDirection: "column"}}>
-          <div style={{display:'flex', flexDirection: "column"}}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {data.outputs.map((input) => (
-              <div 
+              <div
                 key={input.identifier}
-                style={{display:'flex', justifyContent: "flex-end"}}
-              >{input.name}</div>
+                style={{ display: "flex", justifyContent: "flex-end" }}
+              >
+                {input.name}
+              </div>
             ))}
           </div>
-          <div style={{display:'flex', flexDirection: "column"}}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {data.inputs.map((input) => (
-              <div 
-                key={input.identifier}
-                style={{display:'flex'}}
-              >{input.name}</div>
+              <div key={input.identifier} style={{ display: "flex" }}>
+                {input.name}
+              </div>
             ))}
           </div>
         </div>
