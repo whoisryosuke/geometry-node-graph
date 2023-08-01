@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import ReactFlow, { Controls, Background, DefaultEdgeOptions } from "reactflow";
 import "reactflow/dist/style.css";
-import data from "./data/Test-nodes-53.json";
+import data from "./data/Tutorial-nodes-0.json";
 import "reactflow/dist/style.css";
 import TextUpdaterNode from "./CustomNode";
 
