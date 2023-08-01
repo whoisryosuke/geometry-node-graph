@@ -1,11 +1,14 @@
-import { useCallback } from "react";
 import { Handle, Position } from "reactflow";
+import { GeometryNodeData } from "./types";
 
-const handleStyle = { top: 30 };
 const HEADER_SIZE = 30;
 const HANDLE_SPACING = 20;
 
-export default function TextUpdaterNode({ data }) {
+type Props = {
+  data: GeometryNodeData,
+}
+
+export default function TextUpdaterNode({ data }: Props) {
   console.log("node data", data);
 
   return (
