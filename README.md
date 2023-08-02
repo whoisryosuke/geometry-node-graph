@@ -263,3 +263,9 @@ This app uses react-flow to display the node graph. It provides a lot of nice st
 The nodes are generated from a JSON file that is exported from Blender using a custom Python script. It basically reads the geometry node data and creates a JSON file with the data.
 
 > Interested in learning more? [Check out my blog](https://whoisryosuke.com/blog), where I break down how this works.
+
+## Release
+
+1. Bump version in `package.json`
+1. `yarn build`
+1. `npm publish`
