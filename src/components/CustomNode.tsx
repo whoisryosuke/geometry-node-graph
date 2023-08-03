@@ -6,6 +6,7 @@ import { NODE_INPUT_TYPES, SOCKET_COLORS } from "../constants/colors";
 import AccordionIcon from "./AccordionIcon";
 import NodeSocketLabel from "./NodeSocketLabel";
 import styled from "styled-components";
+import Stack from "./Stack";
 
 const HEADER_SIZE = 35;
 const HANDLE_SPACING = 22;
@@ -87,18 +88,18 @@ export default function TextUpdaterNode({ data }: Props) {
         </NodeHeader>
 
         {expanded && (
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+          <Stack>
+            <Stack>
               {data.outputs.map((input) => (
                 <NodeSocketLabel input={input} rightAlign />
               ))}
-            </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            </Stack>
+            <Stack>
               {data.inputs.map((input) => (
                 <NodeSocketLabel input={input} />
               ))}
-            </div>
-          </div>
+            </Stack>
+          </Stack>
         )}
       </NodeContainer>
       {data.outputs.map((input, index) => (
