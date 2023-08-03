@@ -1,14 +1,41 @@
 import { Handle, Position } from "reactflow";
 import { GeometryNodeData } from "../types";
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 import { SOCKET_STYLES, SOCKET_TYPES } from "../constants/sockets";
 import { NODE_INPUT_TYPES, SOCKET_COLORS } from "../constants/colors";
 import AccordionIcon from "./AccordionIcon";
 import NodeSocketLabel from "./NodeSocketLabel";
+import styled from "styled-components";
 
 const HEADER_SIZE = 35;
 const HANDLE_SPACING = 22;
 const HANDLE_COLLAPSED = 12;
+
+type NodeContainerProps = {
+  width: CSSProperties['width'];
+  minHeight: CSSProperties['minHeight'];
+}
+
+const NodeContainer = styled.div<NodeContainerProps>((props) => ({
+  width: props.width,
+  minHeight: props.minHeight,
+  backgroundColor: "#303030",
+  borderRadius: 6,
+  boxShadow: "0px 4px 5px 1px rgba(0, 0, 0, 0.25)",
+}))
+
+type NodeHeaderProps = {
+  backgroundColor: CSSProperties['backgroundColor'];
+}
+
+const NodeHeader = styled.div<NodeHeaderProps>((props) => ({
+  width: props.backgroundColor,
+  color: "#E5E5E5",
+  fontSize: "12px",
+  padding: "2px 4px",
+  borderTopLeftRadius: 6,
+  borderTopRightRadius: 6,
+}))
 
 type Props = {
   data: GeometryNodeData;
@@ -41,26 +68,14 @@ export default function TextUpdaterNode({ data }: Props) {
         />
       ))}
 
-      <div
-        style={{
-          width: data.width,
-          minHeight: expanded ? data.height : "auto",
-          backgroundColor: "#303030",
-          borderRadius: 6,
-          boxShadow: "0px 4px 5px 1px rgba(0, 0, 0, 0.25)",
-        }}
+      <NodeContainer
+        width={data.width}
+        minHeight={expanded ? data.height : "auto"}
       >
-        <div
-          style={{
-            backgroundColor: data.use_custom_color
+        <NodeHeader
+            backgroundColor={data.use_custom_color
               ? `rgb(${data.color.r},${data.color.g},${data.color.b})`
-              : "#1D725E",
-            color: "#E5E5E5",
-            fontSize: "12px",
-            padding: "2px 4px",
-            borderTopLeftRadius: 6,
-            borderTopRightRadius: 6,
-          }}
+              : "#1D725E"}
         >
           <button
             onClick={toggleExpanded}
@@ -69,7 +84,7 @@ export default function TextUpdaterNode({ data }: Props) {
             <AccordionIcon />
           </button>
           {data?.label ?? "Node"}
-        </div>
+        </NodeHeader>
 
         {expanded && (
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -85,7 +100,7 @@ export default function TextUpdaterNode({ data }: Props) {
             </div>
           </div>
         )}
-      </div>
+      </NodeContainer>
       {data.outputs.map((input, index) => (
         <Handle
           key={input.identifier}
