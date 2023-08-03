@@ -8,7 +8,8 @@ type NodeSocketLabelContainerProps = {
 }
 
 const NodeSocketLabelContainer = styled.div<NodeSocketLabelContainerProps>((props) => ({
-  justifyContent: props.justifyContent,
+  alignItems: props.justifyContent,
+  flexDirection: "column",
   display: "flex",
   fontSize: "12px",
   padding: "2px 8px",
