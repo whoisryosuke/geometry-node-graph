@@ -16,10 +16,16 @@ export default defineConfig({
     },
 
     rollupOptions: {
-      external: ["react", "react/jsx-runtime", "react-dom"],
+      external: [
+        "react",
+        "react/jsx-runtime",
+        "react-dom",
+        "styled-components",
+      ],
       output: {
         globals: {
           react: "React",
+          "styled-components": "styled-components",
           "react-dom": "ReactDOM",
           "react/jsx-runtime": "react/jsx-runtime",
         },

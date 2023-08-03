@@ -1,52 +1,14 @@
 import { Handle, Position } from "reactflow";
-import { GeometryNodeData, GeometryNodeInput } from "../types";
+import { GeometryNodeData } from "../types";
 import { useState } from "react";
 import { SOCKET_STYLES, SOCKET_TYPES } from "../constants/sockets";
 import { NODE_INPUT_TYPES, SOCKET_COLORS } from "../constants/colors";
+import AccordionIcon from "./AccordionIcon";
+import NodeSocketLabel from "./NodeSocketLabel";
 
 const HEADER_SIZE = 35;
 const HANDLE_SPACING = 22;
 const HANDLE_COLLAPSED = 12;
-
-type AccordionIconProps = {
-  // Toggle to light mode
-  light?: boolean;
-};
-
-function AccordionIcon({ light }: AccordionIconProps) {
-  return (
-    <svg
-      width="9"
-      height="5"
-      viewBox="0 0 9 5"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M0.5 0.5L4.5 4L8 0.5" stroke={light ? "#313131" : "#C1C1C1"} />
-    </svg>
-  );
-}
-
-type NodeSocketLabelProps = {
-  input: GeometryNodeInput;
-  rightAlign?: boolean;
-};
-
-function NodeSocketLabel({ input, rightAlign }: NodeSocketLabelProps) {
-  return (
-    <div
-      key={input.identifier}
-      style={{
-        display: "flex",
-        fontSize: "12px",
-        padding: "2px 8px",
-        justifyContent: rightAlign ? "flex-end" : "flex-start",
-      }}
-    >
-      {input.name}
-    </div>
-  );
-}
 
 type Props = {
   data: GeometryNodeData;

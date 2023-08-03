@@ -6,6 +6,15 @@ export type NodeColorRGB = {
     b: number,
 }
 
+type Vector2D = {
+    x: number;
+    y: number;
+}
+
+type Vector3D = Vector2D & {
+    z: number;
+}
+
 export type GeometryNodeData = {
     label: string,
     width: number,
@@ -21,6 +30,7 @@ export type GeometryNodeData = {
 export type GeometryNodeInput = {
     "description": string,
     // Maybe hard-code some types?
+    "default_value": string | string[] | Vector2D | Vector3D,
     "display_shape": string,
     "enabled": boolean,
     "hide": boolean,
@@ -37,11 +47,6 @@ export type GeometryNodeInput = {
     "show_expanded": boolean,
     // Maybe hard-code some types?
     "type": string
-}
-
-type Vector2D = {
-    x: number;
-    y: number;
 }
 
 type GeometryNode = {

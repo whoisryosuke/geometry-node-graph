@@ -1,5 +1,5 @@
 import NodeGraph from "./components/NodeGraph";
-import data from "./data/Tutorial-nodes-0.json";
+import data from "./data/Tutorial-nodes-3.json";
 import { GeometryNodeFile } from "./types";
 import "reactflow/dist/style.css";
 
