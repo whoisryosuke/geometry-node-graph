@@ -8,8 +8,24 @@ import NodeSocketLabel from "./NodeSocketLabel";
 import styled from "styled-components";
 import Stack from "./Stack";
 
+const getSocketLength = (socketValue: GeometryNodeData['inputs'][0]['default_value']) => {
+  let socketLength = 0;
+  if(socketValue && typeof(socketValue) === "object") {
+    const socketLoop = Object.values(socketValue);
+    socketLength = socketLoop.length;
+  }
+  if(Array.isArray(socketValue)) {
+    socketLength = socketValue.length;
+  }
+  if(typeof(socketValue) === "string") {
+    socketLength = 1;
+  }
+  return socketLength;
+}
+
 const HEADER_SIZE = 35;
 const HANDLE_SPACING = 22;
+const INPUT_SPACING = 28;
 const HANDLE_COLLAPSED = 12;
 
 type NodeContainerProps = {
@@ -44,15 +60,39 @@ type Props = {
 
 export default function TextUpdaterNode({ data }: Props) {
   const [expanded, setExpanded] = useState(true);
-  const inputTopMargin = data.outputs.length * HANDLE_SPACING;
+  // Get the height of outputs
+  // The spacing of the labels
+  const outputLabelSpacing = data.outputs.length * HANDLE_SPACING;
+  // The spacing of any inputs
+  const outputInputSpacing = data.outputs.reduce((total,_, index) => {
+    // Get the previous socket's inputs to see how much space it took up
+    // This sucks I know - blame react-flow for absolute positioning handles
+    const socketValue = data.outputs?.[index - 1]?.default_value ?? null;
+    const socketLength = getSocketLength(socketValue);
+    const verticalSpacing = INPUT_SPACING * socketLength;
+
+    return total + verticalSpacing;
+  }, 0)
+  const inputTopMargin = outputLabelSpacing + outputInputSpacing
 
   const toggleExpanded = () => {
     setExpanded((prevState) => !prevState);
   };
 
+  let inputVerticalSpacing = 0;
+  let outputVerticalSpacing = 0;
+
   return (
     <>
-      {data.inputs.map((input, index) => (
+      {data.inputs.map((input, index) => {
+        // Get the previous socket's inputs to see how much space it took up
+        // This sucks I know - blame react-flow for absolute positioning handles
+        const socketValue = data.inputs?.[index - 1]?.default_value ?? null;
+        const socketLength = getSocketLength(socketValue);
+        const verticalSpacing = INPUT_SPACING * socketLength;
+        inputVerticalSpacing = inputVerticalSpacing + verticalSpacing;
+        console.log('vertical spacing', input.name, inputVerticalSpacing)
+        return (
         <Handle
           key={input.identifier}
           type="target"
@@ -62,12 +102,12 @@ export default function TextUpdaterNode({ data }: Props) {
             backgroundColor: SOCKET_COLORS[input.type as NODE_INPUT_TYPES],
             borderColor: "#1B1B1B",
             top: expanded
-              ? HEADER_SIZE + HANDLE_SPACING * index + inputTopMargin
+              ? HEADER_SIZE + HANDLE_SPACING * index + inputTopMargin + inputVerticalSpacing
               : HANDLE_COLLAPSED,
           }}
           id={input.type}
         />
-      ))}
+      )})}
 
       <NodeContainer
         width={data.width}
@@ -102,7 +142,14 @@ export default function TextUpdaterNode({ data }: Props) {
           </Stack>
         )}
       </NodeContainer>
-      {data.outputs.map((input, index) => (
+      {data.outputs.map((input, index) => {
+        // Get the previous socket's inputs to see how much space it took up
+        // This sucks I know - blame react-flow for absolute positioning handles
+        const socketValue = data.outputs?.[index - 1]?.default_value ?? null;
+        const socketLength = getSocketLength(socketValue);
+        const verticalSpacing = INPUT_SPACING * socketLength;
+        outputVerticalSpacing = outputVerticalSpacing + verticalSpacing;
+        return(
         <Handle
           key={input.identifier}
           type="source"
@@ -112,12 +159,12 @@ export default function TextUpdaterNode({ data }: Props) {
             backgroundColor: SOCKET_COLORS[input.type as NODE_INPUT_TYPES],
             borderColor: "#1B1B1B",
             top: expanded
-              ? HEADER_SIZE + HANDLE_SPACING * index
+              ? HEADER_SIZE + (HANDLE_SPACING * index) + outputVerticalSpacing
               : HANDLE_COLLAPSED,
           }}
           id={input.type}
         />
-      ))}
+      )})}
     </>
   );
 }
